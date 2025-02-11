@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: brown-ast
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 6687dd46ae732d040abb8a46cc1c6e0f, type: 3}
+      propertyPath: m_TagString
+      value: Asteroid
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 6687dd46ae732d040abb8a46cc1c6e0f, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.744797
@@ -67,5 +71,88 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 6687dd46ae732d040abb8a46cc1c6e0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 922494608037302611}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 6687dd46ae732d040abb8a46cc1c6e0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4993230744821439876}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 6687dd46ae732d040abb8a46cc1c6e0f, type: 3}
+--- !u!1 &6579075009761492215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: 6687dd46ae732d040abb8a46cc1c6e0f, type: 3}
+  m_PrefabInstance: {fileID: 4320621708265679775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &922494608037302611
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6579075009761492215}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &4993230744821439876
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6579075009761492215}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.005000025, y: 0.33}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.48936167, y: -0.08928572}
+    oldSize: {x: 0.47, y: 0.56}
+    newSize: {x: 0.47, y: 0.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.47, y: 0.56}
+  m_EdgeRadius: 0
