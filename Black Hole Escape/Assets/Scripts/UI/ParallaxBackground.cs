@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    [Header("Parallax Settings")]
-    public float speed = 2f;
-    public float resetPositionY;
-    public float startPositionY;
+    public float speed = 2.0f; // Speed of the scrolling background
+    public float resetHeight;  // The height at which the background resets
 
     private Vector3 startPosition;
 
-    private void Start()
+    void Start()
     {
         startPosition = transform.position;
+        if (resetHeight == 0)
+        {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            resetHeight = spriteRenderer.bounds.size.y;
+        }
     }
 
-    private void Update()
+    void Update()
     {
         transform.position += Vector3.down * speed * Time.deltaTime;
 
-        if (transform.position.y <= resetPositionY)
+        if (transform.position.y <= startPosition.y - resetHeight)
         {
-            transform.position = new Vector3(transform.position.x, startPositionY, transform.position.z);
+            transform.position = startPosition;
         }
     }
 }

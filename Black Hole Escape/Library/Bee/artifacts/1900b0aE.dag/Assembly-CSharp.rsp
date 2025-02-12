@@ -374,7 +374,9 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.55f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Asteroids/Asteroids.cs"
 "Assets/Scripts/Asteroids/AsteroidSpawner.cs"
+"Assets/Scripts/Asteroids/BlackHole.cs"
 "Assets/Scripts/Asteroids/DestroyObjects.cs"
+"Assets/Scripts/Player Scripts/PlayerCollision.cs"
 "Assets/Scripts/Player Scripts/PlayerController.cs"
 "Assets/Scripts/UI/ParallaxBackground.cs"
 -langversion:9.0
