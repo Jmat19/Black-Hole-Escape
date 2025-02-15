@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public Transform targetObject; // The object that will grow
+    public string objectTag1 = "Asteroid";
+    public string objectTag2 = "PowerUp";
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Asteroid"))
+        // Check if the colliding object matches one of the specified tags
+        if (other.CompareTag(objectTag1) || other.CompareTag(objectTag2))
         {
-            GrowthModifier modifier = other.GetComponent<GrowthModifier>();
-            if (modifier != null)
-            {
-                targetObject.localScale += Vector3.one * modifier.growthAmount;
-            }
+            // Destroy the colliding object
+            Destroy(other.gameObject);
         }
     }
-}
-
-public class GrowthModifier : MonoBehaviour
-{
-    public float growthAmount = 50.0f; // Changeable growth amount per object
 }
 
 

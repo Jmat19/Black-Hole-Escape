@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Asteroid
+  - BlackHole
+  - PowerUp
   layers:
   - Default
   - TransparentFX

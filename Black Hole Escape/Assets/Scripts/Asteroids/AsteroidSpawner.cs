@@ -5,9 +5,10 @@ using UnityEngine;
 public class AsteroidSpawner : MonoBehaviour
 {
     [Header("Game Objects to Spawn")]
-    public GameObject object1;
-    public GameObject object2;
-    public GameObject object3;
+    public GameObject asteroid1;
+    public GameObject asteroid2;
+    public GameObject asteroid3;
+    public GameObject powerUp;
 
     [Header("Spawn Points")]
     public Transform spawnPoint1;
@@ -16,41 +17,43 @@ public class AsteroidSpawner : MonoBehaviour
 
     [Header("Spawn Time Interval (in seconds)")]
     public float spawnInterval = 2f;
+    public float powerUpSpawnInterval = 5f;
     public float doubleSpawnChance = 0.8f; // 60% chance to spawn two objects
 
-    private GameObject[] objects;
+    private GameObject[] asteroids;
     private Transform[] spawnPoints;
     private List<Transform> availableSpawnPoints;
 
     private void Start()
     {
-        objects = new GameObject[] { object1, object2, object3 };
+        asteroids = new GameObject[] { asteroid1, asteroid2, asteroid3 };
         spawnPoints = new Transform[] { spawnPoint1, spawnPoint2, spawnPoint3 };
 
-        StartCoroutine(SpawnObjectsRandomly());
+        StartCoroutine(SpawnAsteroids());
+        StartCoroutine(SpawnPowerUp());
     }
 
-    private IEnumerator SpawnObjectsRandomly()
+    private IEnumerator SpawnAsteroids()
     {
         while (true)
         {
             availableSpawnPoints = new List<Transform>(spawnPoints);
-            SpawnSingleObject();
+            SpawnSingleAsteroid();
 
             if (Random.value < doubleSpawnChance && availableSpawnPoints.Count > 0)
             {
-                SpawnSingleObject();
+                SpawnSingleAsteroid();
             }
 
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
-    private void SpawnSingleObject()
+    private void SpawnSingleAsteroid()
     {
         if (availableSpawnPoints.Count == 0) return;
 
-        GameObject selectedObject = objects[Random.Range(0, objects.Length)];
+        GameObject selectedObject = asteroids[Random.Range(0, asteroids.Length)];
         int spawnIndex = Random.Range(0, availableSpawnPoints.Count);
         Transform selectedSpawnPoint = availableSpawnPoints[spawnIndex];
         availableSpawnPoints.RemoveAt(spawnIndex);
@@ -58,6 +61,20 @@ public class AsteroidSpawner : MonoBehaviour
         if (selectedObject != null && selectedSpawnPoint != null)
         {
             Instantiate(selectedObject, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
+        }
+    }
+
+    private IEnumerator SpawnPowerUp()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(powerUpSpawnInterval);
+
+            Transform selectedSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            if (powerUp != null && selectedSpawnPoint != null)
+            {
+                Instantiate(powerUp, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
+            }
         }
     }
 }

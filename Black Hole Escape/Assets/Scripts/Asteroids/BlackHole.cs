@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    public float growthFactor = 1.2f; // Scale increase factor
-    public float moveSpeed = 2.0f;    // Movement speed after collision
-    private int collisionCount = 0;
-    private bool canMove = false;
+    public float sizeGrowthFactor = 1.5f; // Factor by which BoxCollider and Sprite size increases
+    public float moveUpwardAmount = 2.0f; // Amount by which the Black Hole moves up
+    public GameObject blackHole; 
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Asteroid"))
+        if (gameObject.CompareTag("Player") && collision.CompareTag("Asteroid"))
         {
-            collisionCount++;
-            Destroy(other.gameObject);
-
-            if (collisionCount >= 3)
-            {
-                canMove = true;
-                transform.localScale *= growthFactor;
-            }
+            IncreaseSizeAndMove();
         }
     }
 
-    void Update()
+    void IncreaseSizeAndMove()
     {
-        if (canMove)
+        if (blackHole != null)
         {
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+            // Increase BoxCollider size
+            BoxCollider2D boxCollider = blackHole.GetComponent<BoxCollider2D>();
+            if (boxCollider != null)
+            {
+                boxCollider.size *= sizeGrowthFactor;
+            }
+
+            // Increase Sprite size
+            blackHole.transform.localScale *= sizeGrowthFactor;
+
+            // Move objectC upward
+            blackHole.transform.position += new Vector3(0, moveUpwardAmount, 0);
         }
     }
 }
+
 
