@@ -379,8 +379,10 @@
 "Assets/Scripts/Player Scripts/PlayerCollision.cs"
 "Assets/Scripts/Player Scripts/PlayerController.cs"
 "Assets/Scripts/Player Scripts/PowerUp.cs"
+"Assets/Scripts/UI/ChangeScene.cs"
 "Assets/Scripts/UI/GameOver.cs"
 "Assets/Scripts/UI/ParallaxBackground.cs"
+"Assets/Scripts/UI/ProgressBar.cs"
 -langversion:9.0
 /deterministic
 /optimize+

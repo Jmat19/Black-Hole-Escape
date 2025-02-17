@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    public GameObject freezeUI; // UI Panel containing text and button
+    public Canvas gameCanvas; // Assign the Canvas GameObject in the Inspector
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player")) // Ensure Player has the "Player" tag
         {
-            Time.timeScale = 0f; // Freeze the game
-            if (freezeUI != null)
-            {
-                freezeUI.SetActive(true); // Show UI panel with text and button
-            }
+            // Pause the game
+            Time.timeScale = 0;
+
+            // Change the Canvas Order in Layer
+            ChangeCanvasOrder(gameCanvas, 1);
         }
     }
 
-    public void ResumeGame()
+    void ChangeCanvasOrder(Canvas canvas, int order)
     {
-        Time.timeScale = 1f; // Unfreeze the game
-        if (freezeUI != null)
+        if (canvas != null)
         {
-            freezeUI.SetActive(false);
+            canvas.sortingOrder = order; // Update sorting order
+        }
+        else
+        {
+            Debug.LogError("Canvas is not assigned!");
         }
     }
 }

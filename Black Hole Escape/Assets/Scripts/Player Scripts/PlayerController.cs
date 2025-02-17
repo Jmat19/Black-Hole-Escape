@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float laneDistance = 3.0f; // Distance between lanes
-    public float speed = 10f; // Speed of player movement
-    private int currentLane = 1; // 0 = Left, 1 = Middle, 2 = Right
+    public float laneDistance = 3.0f;
+    public float speed = 10f;
+    private int currentLane = 1;
     private Vector3 targetPosition;
 
     void Start()
@@ -34,14 +34,12 @@ public class PlayerController : MonoBehaviour
 
     private void ShiftLane(int direction)
     {
-        // Update lane index within bounds
         currentLane = Mathf.Clamp(currentLane + direction, 0, 2);
         targetPosition = new Vector3(currentLane * laneDistance - laneDistance, transform.position.y, transform.position.z);
     }
 
     private void MoveToTargetLane()
     {
-        // Smooth movement towards the target lane position
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 }
